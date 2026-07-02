@@ -25,7 +25,7 @@
 
   <!-- PWA meta -->
   <meta name="theme-color" content="#1d232a">
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="icon" href="icons/favicon.ico" sizes="any"  type="image/x-icon">
     <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -333,5 +333,40 @@
 
 <script src="app.js" type="module"></script>
 <script>navigator.serviceWorker?.register('./sw.js')</script>
+<script type="module">
+  // Import Workbox directly from the CDN
+  import { Workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/7.3.0/workbox-window.prod.mjs';
+
+  if ('serviceWorker' in navigator) {
+    // Point this to your local service worker file
+    const wb = new Workbox('/sw.js');
+
+    // This triggers when a new version is installed and waiting to become active
+    wb.addEventListener('waiting', (event) => {
+      // Create a simple update banner
+      const banner = document.createElement('div');
+      banner.innerHTML = `
+        <div style="position: fixed; bottom: 20px; right: 20px; background: #222; color: #fff; padding: 16px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 10000; font-family: sans-serif;">
+          <p style="margin: 0 0 10px 0;">A new version of this app is available!</p>
+          <button id="update-btn" style="background: #007bff; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;">Update Now</button>
+        </div>
+      `;
+      document.body.appendChild(banner);
+
+      // When clicked, send the message to the Service Worker to skip waiting
+      document.getElementById('update-btn').addEventListener('click', () => {
+        wb.messageSkipWaiting();
+      });
+    });
+
+    // Automatically reload the page once the new Service Worker takes over
+    wb.addEventListener('controlling', () => {
+      globalThis.location.reload();
+    });
+
+    // Register your service worker
+    wb.register();
+  }
+</script>
 </body>
 </html>
