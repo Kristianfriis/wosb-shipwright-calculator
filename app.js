@@ -78,13 +78,11 @@ const normalizeState = (raw) => {
 }
 
 const flattenShips = (data) =>
-  Object.entries(data || {}).flatMap(([branchName, ships]) =>
-    (Array.isArray(ships) ? ships : []).map((ship, index) => ({
-      id: `${branchName}:${ship.name}:${index}`,
-      ...ship,
-      branchName: branchName.replaceAll('_branch', '').replaceAll('_', ' ')
-    }))
-  )
+  (data || []).map((ship, index) => ({
+    id: `${ship.branch}:${ship.name}:${index}`,
+    ...ship,
+    branchName: ship.branch
+  }))
 
 const matColors = {
   beam: 'text-primary',

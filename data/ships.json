@@ -1,761 +1,781 @@
-{
-  "high_speed_branch": [
-    {
-      "name": "Pickle",
-      "level": "VII",
-      "tier": "Starter Scout",
-      "image": "images/mPickle.png",
-      "resources": {
-        "canvas": 0,
-        "beam": 0,
-        "bulkhead": 0,
-        "plate": 0,
-        "battle_marks": 0,
-        "raw_wood": 120,
-        "raw_textile": 80,
-        "iron_ore": 40,
-        "blueprints": null,
-        "licenses": null,
-        "gold_cost": 12500
-      }
+﻿[
+  {
+    "name": "Pickle",
+    "level": "VII",
+    "tier": "Starter Scout",
+    "image": "images/mPickle.png",
+    "resources": {
+      "canvas": 0,
+      "beam": 0,
+      "bulkhead": 0,
+      "plate": 0,
+      "battle_marks": 0,
+      "raw_wood": 120,
+      "raw_textile": 80,
+      "iron_ore": 40,
+      "blueprints": null,
+      "licenses": null,
+      "gold_cost": 12500
     },
-    {
-      "name": "Le Cerf",
-      "level": "VI",
-      "tier": "Swift Hunter",
-      "image": "images/mLe-Cerf.png",
-      "resources": {
-        "canvas": 68,
-        "beam": 38,
-        "bulkhead": 24,
-        "plate": 0,
-        "battle_marks": 40,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level VI Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 112400
-      }
+    "branch": "high_speed"
+  },
+  {
+    "name": "Le Cerf",
+    "level": "VI",
+    "tier": "Swift Hunter",
+    "image": "images/mLe-Cerf.png",
+    "resources": {
+      "canvas": 68,
+      "beam": 38,
+      "bulkhead": 24,
+      "plate": 0,
+      "battle_marks": 40,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level VI Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 112400
     },
-    {
-      "name": "La Creole",
-      "level": "V",
-      "tier": "Caribbean Racer",
-      "image": "images/mLa-Creole.png",
-      "resources": {
-        "canvas": 162,
-        "beam": 84,
-        "bulkhead": 52,
-        "plate": 0,
-        "battle_marks": 90,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level V Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 245000
-      }
+    "branch": "high_speed"
+  },
+  {
+    "name": "La Creole",
+    "level": "V",
+    "tier": "Caribbean Racer",
+    "image": "images/mLa-Creole.png",
+    "resources": {
+      "canvas": 162,
+      "beam": 84,
+      "bulkhead": 52,
+      "plate": 0,
+      "battle_marks": 90,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level V Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 245000
     },
-    {
-      "name": "Surprise",
-      "level": "IV",
-      "tier": "Elite Frigate",
-      "image": "images/mSurprise.png",
-      "resources": {
-        "canvas": 365,
-        "beam": 157,
-        "bulkhead": 56,
-        "plate": 0,
-        "battle_marks": 130,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level IV Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 367123
-      }
+    "branch": "high_speed"
+  },
+  {
+    "name": "Surprise",
+    "level": "IV",
+    "tier": "Elite Frigate",
+    "image": "images/mSurprise.png",
+    "resources": {
+      "canvas": 365,
+      "beam": 157,
+      "bulkhead": 56,
+      "plate": 0,
+      "battle_marks": 130,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level IV Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 367123
     },
-    {
-      "name": "Poltava",
-      "level": "III",
-      "tier": "Russian Speed Warship",
-      "image": "images/mPoltava.png",
-      "resources": {
-        "canvas": 580,
-        "beam": 295,
-        "bulkhead": 148,
-        "plate": 32,
-        "battle_marks": 380,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level III Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 584900
-      }
+    "branch": "high_speed"
+  },
+  {
+    "name": "Poltava",
+    "level": "III",
+    "tier": "Russian Speed Warship",
+    "image": "images/mPoltava.png",
+    "resources": {
+      "canvas": 580,
+      "beam": 295,
+      "bulkhead": 148,
+      "plate": 32,
+      "battle_marks": 380,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level III Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 584900
     },
-    {
-      "name": "Ingermanland",
-      "level": "I",
-      "tier": "Legendary Speed Flagship",
-      "image": "images/mIngermanland.png",
-      "resources": {
-        "canvas": 843,
-        "beam": 461,
-        "bulkhead": 270,
-        "plate": 78,
-        "battle_marks": 735,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Imperial Ship Blueprint",
-            "quantity": 1,
-            "note": "Requires converting 100 Blueprint Fragments"
-          }
-        ],
-        "licenses": [
-          {
-            "name": "Construction License",
-            "quantity": 1
-          }
-        ],
-        "gold_cost": 1450000
-      }
-    }
-  ],
-  "battle_branch": [
-    {
-      "name": "Horizont",
-      "level": "VII",
-      "tier": "Starter Combat",
-      "image": "images/mHorizon.png",
-      "resources": {
-        "canvas": 0,
-        "beam": 0,
-        "bulkhead": 0,
-        "plate": 0,
-        "battle_marks": 0,
-        "raw_wood": 140,
-        "raw_textile": 90,
-        "iron_ore": 60,
-        "blueprints": null,
-        "licenses": null,
-        "gold_cost": 15000
-      }
+    "branch": "high_speed"
+  },
+  {
+    "name": "Ingermanland",
+    "level": "I",
+    "tier": "Legendary Speed Flagship",
+    "image": "images/mIngermanland.png",
+    "resources": {
+      "canvas": 843,
+      "beam": 461,
+      "bulkhead": 270,
+      "plate": 78,
+      "battle_marks": 735,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Imperial Ship Blueprint",
+          "quantity": 1,
+          "note": "Requires converting 100 Blueprint Fragments"
+        }
+      ],
+      "licenses": [
+        {
+          "name": "Construction License",
+          "quantity": 1
+        }
+      ],
+      "gold_cost": 1450000
     },
-    {
-      "name": "La Salamandre",
-      "level": "VI",
-      "tier": "Early Combat",
-      "image": "images/mLa-Salamandre.png",
-      "resources": {
-        "canvas": 82,
-        "beam": 54,
-        "bulkhead": 42,
-        "plate": 0,
-        "battle_marks": 60,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level VI Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 142000
-      }
+    "branch": "high_speed"
+  },
+  {
+    "name": "Horizont",
+    "level": "VII",
+    "tier": "Starter Combat",
+    "image": "images/mHorizon.png",
+    "resources": {
+      "canvas": 0,
+      "beam": 0,
+      "bulkhead": 0,
+      "plate": 0,
+      "battle_marks": 0,
+      "raw_wood": 140,
+      "raw_textile": 90,
+      "iron_ore": 60,
+      "blueprints": null,
+      "licenses": null,
+      "gold_cost": 15000
     },
-    {
-      "name": "Black Wind",
-      "level": "V",
-      "tier": "Mid Combat",
-      "image": "images/mBlack-Wind.png",
-      "resources": {
-        "canvas": 210,
-        "beam": 138,
-        "bulkhead": 96,
-        "plate": 0,
-        "battle_marks": 140,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level V Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 310000
-      }
+    "branch": "battle"
+  },
+  {
+    "name": "La Salamandre",
+    "level": "VI",
+    "tier": "Early Combat",
+    "image": "images/mLa-Salamandre.png",
+    "resources": {
+      "canvas": 82,
+      "beam": 54,
+      "bulkhead": 42,
+      "plate": 0,
+      "battle_marks": 60,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level VI Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 142000
     },
-    {
-      "name": "Essex",
-      "level": "IV",
-      "tier": "Advanced Combat",
-      "image": "images/mEssex.png",
-      "resources": {
-        "canvas": 512,
-        "beam": 253,
-        "bulkhead": 117,
-        "plate": 34,
-        "battle_marks": 340,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level IV Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 753587
-      }
+    "branch": "battle"
+  },
+  {
+    "name": "Black Wind",
+    "level": "V",
+    "tier": "Mid Combat",
+    "image": "images/mBlack-Wind.png",
+    "resources": {
+      "canvas": 210,
+      "beam": 138,
+      "bulkhead": 96,
+      "plate": 0,
+      "battle_marks": 140,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level V Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 310000
     },
-    {
-      "name": "Anson",
-      "level": "III",
-      "tier": "Expert Combat",
-      "image": "images/mAnson.png",
-      "resources": {
-        "canvas": 720,
-        "beam": 410,
-        "bulkhead": 340,
-        "plate": 85,
-        "battle_marks": 620,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level III Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 985000
-      }
+    "branch": "battle"
+  },
+  {
+    "name": "Essex",
+    "level": "IV",
+    "tier": "Advanced Combat",
+    "image": "images/mEssex.png",
+    "resources": {
+      "canvas": 512,
+      "beam": 253,
+      "bulkhead": 117,
+      "plate": 34,
+      "battle_marks": 340,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level IV Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 753587
     },
-    {
-      "name": "Sans Pareil",
-      "level": "II",
-      "tier": "Elite Combat",
-      "image": "images/mSans-Pareil.png",
-      "resources": {
-        "canvas": 980,
-        "beam": 580,
-        "bulkhead": 460,
-        "plate": 135,
-        "battle_marks": 890,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level II Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": [
-          {
-            "name": "Construction License",
-            "quantity": 1
-          }
-        ],
-        "gold_cost": 1280000
-      }
+    "branch": "battle"
+  },
+  {
+    "name": "Anson",
+    "level": "III",
+    "tier": "Expert Combat",
+    "image": "images/mAnson.png",
+    "resources": {
+      "canvas": 720,
+      "beam": 410,
+      "bulkhead": 340,
+      "plate": 85,
+      "battle_marks": 620,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level III Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 985000
     },
-    {
-      "name": "Victory",
-      "level": "I",
-      "tier": "Legendary Combat Flagship",
-      "image": "images/mVictory.png",
-      "resources": {
-        "canvas": 1220,
-        "beam": 710,
-        "bulkhead": 580,
-        "plate": 190,
-        "battle_marks": 1150,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Imperial Ship Blueprint",
-            "quantity": 1,
-            "note": "Requires converting 100 Blueprint Fragments"
-          }
-        ],
-        "licenses": [
-          {
-            "name": "Construction License",
-            "quantity": 1
-          }
-        ],
-        "gold_cost": 1850000
-      }
-    }
-  ],
-  "transport_branch": [
-    {
-      "name": "Friede",
-      "level": "VII",
-      "tier": "Starter Trader",
-      "image": "images/mFriede.png",
-      "resources": {
-        "canvas": 0,
-        "beam": 0,
-        "bulkhead": 0,
-        "plate": 0,
-        "battle_marks": 0,
-        "raw_wood": 160,
-        "raw_textile": 60,
-        "iron_ore": 30,
-        "blueprints": null,
-        "licenses": null,
-        "gold_cost": 10500
-      }
+    "branch": "battle"
+  },
+  {
+    "name": "Sans Pareil",
+    "level": "II",
+    "tier": "Elite Combat",
+    "image": "images/mSans-Pareil.png",
+    "resources": {
+      "canvas": 980,
+      "beam": 580,
+      "bulkhead": 460,
+      "plate": 135,
+      "battle_marks": 890,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level II Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": [
+        {
+          "name": "Construction License",
+          "quantity": 1
+        }
+      ],
+      "gold_cost": 1280000
     },
-    {
-      "name": "Mercury",
-      "level": "VI",
-      "tier": "Early Cargo",
-      "image": "images/mMercury.png",
-      "resources": {
-        "canvas": 58,
-        "beam": 32,
-        "bulkhead": 16,
-        "plate": 0,
-        "battle_marks": 0,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level VI Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 95000
-      }
+    "branch": "battle"
+  },
+  {
+    "name": "Victory",
+    "level": "I",
+    "tier": "Legendary Combat Flagship",
+    "image": "images/mVictory.png",
+    "resources": {
+      "canvas": 1220,
+      "beam": 710,
+      "bulkhead": 580,
+      "plate": 190,
+      "battle_marks": 1150,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Imperial Ship Blueprint",
+          "quantity": 1,
+          "note": "Requires converting 100 Blueprint Fragments"
+        }
+      ],
+      "licenses": [
+        {
+          "name": "Construction License",
+          "quantity": 1
+        }
+      ],
+      "gold_cost": 1850000
     },
-    {
-      "name": "Russia",
-      "level": "V",
-      "tier": "Mid Transport",
-      "image": "images/mRussia.png",
-      "resources": {
-        "canvas": 190,
-        "beam": 110,
-        "bulkhead": 32,
-        "plate": 0,
-        "battle_marks": 0,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level V Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 210000
-      }
+    "branch": "battle"
+  },
+  {
+    "name": "Friede",
+    "level": "VII",
+    "tier": "Starter Trader",
+    "image": "images/mFriede.png",
+    "resources": {
+      "canvas": 0,
+      "beam": 0,
+      "bulkhead": 0,
+      "plate": 0,
+      "battle_marks": 0,
+      "raw_wood": 160,
+      "raw_textile": 60,
+      "iron_ore": 30,
+      "blueprints": null,
+      "licenses": null,
+      "gold_cost": 10500
     },
-    {
-      "name": "Falmouth",
-      "level": "IV",
-      "tier": "Advanced Transport",
-      "image": "images/mFalmouth.png",
-      "resources": {
-        "canvas": 390,
-        "beam": 215,
-        "bulkhead": 64,
-        "plate": 12,
-        "battle_marks": 0,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level IV Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 435000
-      }
+    "branch": "transport"
+  },
+  {
+    "name": "Mercury",
+    "level": "VI",
+    "tier": "Early Cargo",
+    "image": "images/mMercury.png",
+    "resources": {
+      "canvas": 58,
+      "beam": 32,
+      "bulkhead": 16,
+      "plate": 0,
+      "battle_marks": 0,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level VI Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 95000
     },
-    {
-      "name": "Mordaunt",
-      "level": "III",
-      "tier": "Expert Heavy Transport",
-      "image": "images/mMordaunt.png",
-      "resources": {
-        "canvas": 540,
-        "beam": 380,
-        "bulkhead": 120,
-        "plate": 45,
-        "battle_marks": 0,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level III Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 690000
-      }
+    "branch": "transport"
+  },
+  {
+    "name": "Russia",
+    "level": "V",
+    "tier": "Mid Transport",
+    "image": "images/mRussia.png",
+    "resources": {
+      "canvas": 190,
+      "beam": 110,
+      "bulkhead": 32,
+      "plate": 0,
+      "battle_marks": 0,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level V Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 210000
     },
-    {
-      "name": "La Sirene",
-      "level": "II",
-      "tier": "Elite Fleet Hauler",
-      "image": "images/mLaSirene.png",
-      "resources": {
-        "canvas": 760,
-        "beam": 490,
-        "bulkhead": 210,
-        "plate": 90,
-        "battle_marks": 0,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level II Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": [
-          {
-            "name": "Construction License",
-            "quantity": 1
-          }
-        ],
-        "gold_cost": 1150000
-      }
+    "branch": "transport"
+  },
+  {
+    "name": "Falmouth",
+    "level": "IV",
+    "tier": "Advanced Transport",
+    "image": "images/mFalmouth.png",
+    "resources": {
+      "canvas": 390,
+      "beam": 215,
+      "bulkhead": 64,
+      "plate": 12,
+      "battle_marks": 0,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level IV Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 435000
     },
-    {
-      "name": "La Couronne",
-      "level": "I",
-      "tier": "Legendary Grand Merchant",
-      "image": "images/mLaCouronne.png",
-      "resources": {
-        "canvas": 1050,
-        "beam": 680,
-        "bulkhead": 340,
-        "plate": 150,
-        "battle_marks": 0,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Imperial Ship Blueprint",
-            "quantity": 1,
-            "note": "Requires converting 100 Blueprint Fragments"
-          }
-        ],
-        "licenses": [
-          {
-            "name": "Construction License",
-            "quantity": 1
-          }
-        ],
-        "gold_cost": 1650000
-      }
-    }
-  ],
-  "heavy_branch": [
-    {
-      "name": "Phoenix",
-      "level": "VI",
-      "tier": "Early Heavy Frigate",
-      "image": "images/mPhoenix.png",
-      "resources": {
-        "canvas": 94,
-        "beam": 65,
-        "bulkhead": 54,
-        "plate": 0,
-        "battle_marks": 75,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level VI Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 165000
-      }
+    "branch": "transport"
+  },
+  {
+    "name": "Mordaunt",
+    "level": "III",
+    "tier": "Expert Heavy Transport",
+    "image": "images/mMordaunt.png",
+    "resources": {
+      "canvas": 540,
+      "beam": 380,
+      "bulkhead": 120,
+      "plate": 45,
+      "battle_marks": 0,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level III Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 690000
     },
-    {
-      "name": "San Martin",
-      "level": "V",
-      "tier": "Mid Heavy Galleon",
-      "image": "images/mSanMartin.png",
-      "resources": {
-        "canvas": 240,
-        "beam": 165,
-        "bulkhead": 124,
-        "plate": 0,
-        "battle_marks": 180,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level V Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 380000
-      }
+    "branch": "transport"
+  },
+  {
+    "name": "La Sirene",
+    "level": "II",
+    "tier": "Elite Fleet Hauler",
+    "image": "images/mLaSirene.png",
+    "resources": {
+      "canvas": 760,
+      "beam": 490,
+      "bulkhead": 210,
+      "plate": 90,
+      "battle_marks": 0,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level II Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": [
+        {
+          "name": "Construction License",
+          "quantity": 1
+        }
+      ],
+      "gold_cost": 1150000
     },
-    {
-      "name": "Constitution",
-      "level": "IV",
-      "tier": "Advanced Heavy Frigate",
-      "image": "images/mConstitution.png",
-      "resources": {
-        "canvas": 580,
-        "beam": 310,
-        "bulkhead": 195,
-        "plate": 45,
-        "battle_marks": 410,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level IV Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 845000
-      }
+    "branch": "transport"
+  },
+  {
+    "name": "La Couronne",
+    "level": "I",
+    "tier": "Legendary Grand Merchant",
+    "image": "images/mLaCouronne.png",
+    "resources": {
+      "canvas": 1050,
+      "beam": 680,
+      "bulkhead": 340,
+      "plate": 150,
+      "battle_marks": 0,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Imperial Ship Blueprint",
+          "quantity": 1,
+          "note": "Requires converting 100 Blueprint Fragments"
+        }
+      ],
+      "licenses": [
+        {
+          "name": "Construction License",
+          "quantity": 1
+        }
+      ],
+      "gold_cost": 1650000
     },
-    {
-      "name": "Bellona",
-      "level": "III",
-      "tier": "Expert Heavy Ship of the Line",
-      "image": "images/mBellona.png",
-      "resources": {
-        "canvas": 810,
-        "beam": 495,
-        "bulkhead": 410,
-        "plate": 110,
-        "battle_marks": 740,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level III Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 1120000
-      }
+    "branch": "transport"
+  },
+  {
+    "name": "Phoenix",
+    "level": "VI",
+    "tier": "Early Heavy Frigate",
+    "image": "images/mPhoenix.png",
+    "resources": {
+      "canvas": 94,
+      "beam": 65,
+      "bulkhead": 54,
+      "plate": 0,
+      "battle_marks": 75,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level VI Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 165000
     },
-    {
-      "name": "Redoutable",
-      "level": "II",
-      "tier": "Elite Heavy Dreadnought",
-      "image": "images/mRedoutable.png",
-      "resources": {
-        "canvas": 1080,
-        "beam": 690,
-        "bulkhead": 570,
-        "plate": 175,
-        "battle_marks": 980,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level II Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": [
-          {
-            "name": "Construction License",
-            "quantity": 1
-          }
-        ],
-        "gold_cost": 1540000
-      }
+    "branch": "heavy"
+  },
+  {
+    "name": "San Martin",
+    "level": "V",
+    "tier": "Mid Heavy Galleon",
+    "image": "images/mSanMartin.png",
+    "resources": {
+      "canvas": 240,
+      "beam": 165,
+      "bulkhead": 124,
+      "plate": 0,
+      "battle_marks": 180,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level V Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 380000
     },
-    {
-      "name": "Apostolov",
-      "level": "I",
-      "tier": "Legendary Heavy Juggernaut",
-      "image": "images/m12Apostolov.png",
-      "resources": {
-        "canvas": 1450,
-        "beam": 890,
-        "bulkhead": 760,
-        "plate": 240,
-        "battle_marks": 1380,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Imperial Ship Blueprint",
-            "quantity": 1,
-            "note": "Requires converting 100 Blueprint Fragments"
-          }
-        ],
-        "licenses": [
-          {
-            "name": "Construction License",
-            "quantity": 1
-          }
-        ],
-        "gold_cost": 2250000
-      }
-    }
-  ],
-  "siege_branch": [
-    {
-      "name": "Polacca",
-      "level": "VI",
-      "tier": "Early Mortar Vessel",
-      "image": "images/mPolacca.png",
-      "resources": {
-        "canvas": 88,
-        "beam": 46,
-        "bulkhead": 28,
-        "plate": 0,
-        "battle_marks": 55,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level VI Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 135000
-      }
+    "branch": "heavy"
+  },
+  {
+    "name": "Constitution",
+    "level": "IV",
+    "tier": "Advanced Heavy Frigate",
+    "image": "images/mConstitution.png",
+    "resources": {
+      "canvas": 580,
+      "beam": 310,
+      "bulkhead": 195,
+      "plate": 45,
+      "battle_marks": 410,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level IV Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 845000
     },
-    {
-      "name": "Le Requin",
-      "level": "V",
-      "tier": "Mid Siege Chebec",
-      "image": "images/mLeRequin.png",
-      "resources": {
-        "canvas": 225,
-        "beam": 115,
-        "bulkhead": 68,
-        "plate": 0,
-        "battle_marks": 120,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level V Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 290000
-      }
+    "branch": "heavy"
+  },
+  {
+    "name": "Bellona",
+    "level": "III",
+    "tier": "Expert Heavy Ship of the Line",
+    "image": "images/mBellona.png",
+    "resources": {
+      "canvas": 810,
+      "beam": 495,
+      "bulkhead": 410,
+      "plate": 110,
+      "battle_marks": 740,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level III Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 1120000
     },
-    {
-      "name": "Kobukson",
-      "level": "III",
-      "tier": "Expert Armored Siege",
-      "image": "images/mKobukson.png",
-      "resources": {
-        "canvas": 640,
-        "beam": 430,
-        "bulkhead": 310,
-        "plate": 65,
-        "battle_marks": 580,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level III Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": null,
-        "gold_cost": 890000
-      }
+    "branch": "heavy"
+  },
+  {
+    "name": "Redoutable",
+    "level": "II",
+    "tier": "Elite Heavy Dreadnought",
+    "image": "images/mRedoutable.png",
+    "resources": {
+      "canvas": 1080,
+      "beam": 690,
+      "bulkhead": 570,
+      "plate": 175,
+      "battle_marks": 980,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level II Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": [
+        {
+          "name": "Construction License",
+          "quantity": 1
+        }
+      ],
+      "gold_cost": 1540000
     },
-    {
-      "name": "Adventure",
-      "level": "II",
-      "tier": "Elite Heavy Mortar Bomb",
-      "image": "images/mAdventure.png",
-      "resources": {
-        "canvas": 880,
-        "beam": 520,
-        "bulkhead": 410,
-        "plate": 110,
-        "battle_marks": 790,
-        "raw_wood": 0,
-        "raw_textile": 0,
-        "iron_ore": 0,
-        "blueprints": [
-          {
-            "name": "Level II Ship Blueprint",
-            "quantity": 1
-          }
-        ],
-        "licenses": [
-          {
-            "name": "Construction License",
-            "quantity": 1
-          }
-        ],
-        "gold_cost": 1220000
-      }
-    }
-  ]
-}
+    "branch": "heavy"
+  },
+  {
+    "name": "Apostolov",
+    "level": "I",
+    "tier": "Legendary Heavy Juggernaut",
+    "image": "images/m12Apostolov.png",
+    "resources": {
+      "canvas": 1450,
+      "beam": 890,
+      "bulkhead": 760,
+      "plate": 240,
+      "battle_marks": 1380,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Imperial Ship Blueprint",
+          "quantity": 1,
+          "note": "Requires converting 100 Blueprint Fragments"
+        }
+      ],
+      "licenses": [
+        {
+          "name": "Construction License",
+          "quantity": 1
+        }
+      ],
+      "gold_cost": 2250000
+    },
+    "branch": "heavy"
+  },
+  {
+    "name": "Polacca",
+    "level": "VI",
+    "tier": "Early Mortar Vessel",
+    "image": "images/mPolacca.png",
+    "resources": {
+      "canvas": 88,
+      "beam": 46,
+      "bulkhead": 28,
+      "plate": 0,
+      "battle_marks": 55,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level VI Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 135000
+    },
+    "branch": "siege"
+  },
+  {
+    "name": "Le Requin",
+    "level": "V",
+    "tier": "Mid Siege Chebec",
+    "image": "images/mLeRequin.png",
+    "resources": {
+      "canvas": 225,
+      "beam": 115,
+      "bulkhead": 68,
+      "plate": 0,
+      "battle_marks": 120,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level V Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 290000
+    },
+    "branch": "siege"
+  },
+  {
+    "name": "Kobukson",
+    "level": "III",
+    "tier": "Expert Armored Siege",
+    "image": "images/mKobukson.png",
+    "resources": {
+      "canvas": 640,
+      "beam": 430,
+      "bulkhead": 310,
+      "plate": 65,
+      "battle_marks": 580,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level III Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": null,
+      "gold_cost": 890000
+    },
+    "branch": "siege"
+  },
+  {
+    "name": "Adventure",
+    "level": "II",
+    "tier": "Elite Heavy Mortar Bomb",
+    "image": "images/mAdventure.png",
+    "resources": {
+      "canvas": 880,
+      "beam": 520,
+      "bulkhead": 410,
+      "plate": 110,
+      "battle_marks": 790,
+      "raw_wood": 0,
+      "raw_textile": 0,
+      "iron_ore": 0,
+      "blueprints": [
+        {
+          "name": "Level II Ship Blueprint",
+          "quantity": 1
+        }
+      ],
+      "licenses": [
+        {
+          "name": "Construction License",
+          "quantity": 1
+        }
+      ],
+      "gold_cost": 1220000
+    },
+    "branch": "siege"
+  }
+]
