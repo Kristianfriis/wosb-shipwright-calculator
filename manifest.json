@@ -2,7 +2,8 @@
   "name": "World of Sea Battles Shipwright",
   "short_name": "WoSB Shipwright",
   "description": "Calculate shipwright materials needed for your World of Sea Battles builds",
-  "start_url": "/",
+  "start_url": "/wosb-shipwright-calculator/",
+  "scope": "/wosb-shipwright-calculator/",
   "display": "standalone",
   "background_color": "#1d232a",
   "display_override": [
