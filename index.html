@@ -1,470 +1,337 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WoSB Shipwright Calculator</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Alpine.js Framework -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <!-- Web App Capabilities (PWA) -->
-    <meta name="theme-color" content="#0f172a">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WoSB Shipwright Calculator</title>
+
+  <!-- Tailwind CSS v4 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- DaisyUI v5 -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Vue 3 via import map -->
+  <script type="importmap">
+  {
+    "imports": {
+      "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+    }
+  }
+  </script>
+
+  <!-- PWA meta -->
+  <meta name="theme-color" content="#1d232a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" href="icons/favicon.ico" sizes="any"  type="image/x-icon">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
 </head>
-<body class="bg-slate-900 text-slate-100 font-sans min-h-screen pb-12"
-      x-data="shipwrightApp()"
-      x-init="$watch('mats', value => localStorage.setItem('wosb_mats', JSON.stringify(value))); lucide.createIcons(); init();">
+<body>
 
-    <!-- Header -->
-    <header class="bg-slate-950 border-b border-slate-800 py-4 px-6 sticky top-0 z-50 shadow-md">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <i data-lucide="anchor" class="text-sky-400 w-8 h-8"></i>
-                <h1 class="text-xl font-bold tracking-wide uppercase text-sky-400">WoSB Shipwright</h1>
-            </div>
-            <span class="text-xs bg-slate-800 text-slate-400 px-3 py-1 rounded-full border border-slate-700">PWA Ready & Alpine Powered</span>
-        </div>
-    </header>
+<div id="app">
 
-    <main class="max-w-5xl mx-auto px-4 mt-6 space-y-6">
+  <!-- Header -->
+  <header class="navbar bg-base-300 sticky top-0 z-50 shadow-md px-6">
+    <div class="flex-1 flex items-center gap-3">
+      <i data-lucide="anchor" class="text-primary w-8 h-8"></i>
+      <h1 class="text-xl font-bold tracking-wide uppercase text-primary">WoSB Shipwright</h1>
+    </div>
+    <div class="flex-none">
+      <button @click="openSettings()" class="btn btn-ghost btn-circle">
+        <i data-lucide="settings" class="w-5 h-5"></i>
+      </button>
+    </div>
+  </header>
 
-        <!-- Ship Selection Guidance -->
-        <section class="bg-slate-950 border border-slate-800 rounded-xl p-5 shadow-lg">
-            <h2 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
-                <i data-lucide="settings" class="w-4 h-4"></i> Ship Selection
+  <main class="max-w-5xl mx-auto px-4 mt-6 space-y-6">
+
+    <!-- Ship Selection Guidance -->
+    <section class="card bg-base-300 shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title text-sm tracking-wider">
+          <i data-lucide="settings" class="w-4 h-4"></i>
+          Ship Selection
+        </h2>
+        <p class="text-sm opacity-70">
+          Select ships from the data file for each build. Turning on the port toggle applies a 20% discount to the materials required for that build.
+        </p>
+      </div>
+    </section>
+
+    <div class="grid grid-cols-1 xl:grid-cols-[1.1fr_0.9fr] gap-6">
+
+      <!-- BUILD TARGETS -->
+      <section class="card bg-base-300 shadow-xl">
+        <div class="card-body">
+          <div class="flex items-center justify-between mb-2">
+            <h2 class="card-title text-sm tracking-wider">
+              <i data-lucide="ship" class="w-4 h-4 text-primary"></i>
+              Target Materials per Build
             </h2>
-            <p class="text-sm text-slate-400">Select ships from the data file for each build. Turning on the port toggle applies a 20% discount to the materials required for that build.</p>
-        </section>
+            <button type="button" @click="addBuild()" class="btn btn-primary btn-sm">
+              + Add Build
+            </button>
+          </div>
 
-        <div class="grid grid-cols-1 xl:grid-cols-[1.1fr_0.9fr] gap-6">
-            <!-- BUILD TARGETS -->
-            <section class="bg-slate-950 border border-slate-800 rounded-xl p-5 shadow-lg">
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-sm font-semibold text-sky-400 uppercase tracking-wider flex items-center gap-2">
-                        <i data-lucide="ship" class="w-4 h-4"></i> Target Materials per Build
-                    </h2>
-                    <button type="button" @click="addBuild()" class="text-sm bg-sky-600 hover:bg-sky-500 text-white px-3 py-1.5 rounded-lg transition">
-                        + Add Build
-                    </button>
+          <div class="space-y-4">
+            <div v-for="(build, index) in mats.builds" :key="build.id" class="card bg-base-200 border border-base-300">
+              <div class="card-body space-y-4">
+
+                <!-- Build name + remove -->
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex-1">
+                    <label class="label">
+                      <span class="label-text">Build Name</span>
+                    </label>
+                    <input type="text" v-model="build.name" class="input input-bordered w-full" :id="'build-'+index+'-name'">
+                  </div>
+                  <button type="button" v-if="mats.builds.length > 1" @click="removeBuild(index)" class="btn btn-ghost btn-sm text-error self-end">
+                    Remove
+                  </button>
                 </div>
 
-                <div class="space-y-4">
-                    <template x-for="(build, index) in mats.builds" :key="build.id">
-                        <div class="rounded-xl border border-slate-800 bg-slate-900/80 p-4 space-y-4">
-                            <div class="flex items-center justify-between gap-3">
-                                <div class="flex-1">
-                                    <label :for="'build-'+index+'-name'" class="block text-xs text-slate-400 font-medium mb-1">Build Name</label>
-                                    <input :id="'build-'+index+'-name'" type="text" x-model="build.name" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-sky-500">
-                                </div>
-                                <button type="button" x-show="mats.builds.length > 1" @click="removeBuild(index)" class="text-sm text-rose-400 hover:text-rose-300 px-2 py-1 rounded transition">
-                                    Remove
-                                </button>
-                            </div>
-
-                            <div class="grid grid-cols-1 gap-3">
-                                <div>
-                                    <label :for="'build-'+index+'-ship'" class="block text-xs text-slate-400 font-medium mb-1">Ship</label>
-                                    <!-- Hidden native select for accessibility / form fallback -->
-                                    <select :id="'build-'+index+'-ship'" x-model="build.shipKey" class="sr-only" aria-hidden="true">
-                                        <option value="">Select a ship</option>
-                                        <template x-for="ship in shipCatalog" :key="ship.id">
-                                            <option :value="ship.id" x-text="ship.name"></option>
-                                        </template>
-                                    </select>
-
-                                    <!-- Custom dropdown with thumbnails -->
-                                    <div x-data="{ open: false, hl: -1 }" class="relative">
-                                        <button type="button"
-                                                @click="open = !open; if(open) hl = 0"
-                                                @keydown.arrow-down.prevent="open = true; hl = Math.min(hl + 1, shipCatalog.length - 1)"
-                                                @keydown.arrow-up.prevent="hl = Math.max(hl - 1, 0)"
-                                                @keydown.enter.prevent="if(open && hl >= 0) { $dispatch('select-ship', { id: shipCatalog[hl].id }); open = false }"
-                                                @keydown.space.prevent="open = !open"
-                                                class="w-full text-left bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-white flex items-center gap-3 focus:outline-none focus:border-sky-500">
-                                            <template x-if="selectedShip(build.shipKey)">
-                                                <img :src="selectedShip(build.shipKey).image" alt="" class="w-8 h-8 object-contain rounded" />
-                                            </template>
-                                            <template x-if="!selectedShip(build.shipKey)">
-                                                <div class="w-8 h-8 bg-slate-800 rounded"></div>
-                                            </template>
-                                            <div class="flex-1">
-                                                <div class="text-sm" x-text="(selectedShip(build.shipKey) && selectedShip(build.shipKey).name) ? selectedShip(build.shipKey).name : 'Select a ship'"></div>
-                                                <div class="text-xs text-slate-400" x-text="selectedShip(build.shipKey) ? selectedShip(build.shipKey).tier : ''"></div>
-                                            </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                                        </button>
-
-                                        <div x-show="open" x-transition @click.outside="open = false" class="absolute z-40 mt-2 w-full bg-slate-950 border border-slate-800 rounded-lg max-h-64 overflow-auto">
-                                            <template x-for="(ship, sIndex) in shipCatalog" :key="ship.id">
-                                                <div
-                                                    @click="build.shipKey = ship.id; open = false"
-                                                    @mouseenter="hl = sIndex"
-                                                    :class="{'bg-slate-900': hl === sIndex, 'hover:bg-slate-900': hl !== sIndex}"
-                                                    class="flex items-center gap-3 p-2 cursor-pointer">
-                                                    <img :src="ship.image" alt="" class="w-10 h-10 object-contain rounded" />
-                                                    <div class="flex-1 text-sm">
-                                                        <div class="font-medium text-slate-200" x-text="ship.name"></div>
-                                                        <div class="text-xs text-slate-400" x-text="ship.level + ' · ' + ship.tier"></div>
-                                                    </div>
-                                                </div>
-                                            </template>
-                                        </div>
-
-                                        <!-- listen for keyboard selection and apply to build -->
-                                        <div x-on:select-ship.window="build.shipKey = $event.detail.id"></div>
-                                    </div>
-                                </div>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    <div>
-                                        <label :for="'build-'+index+'-quantity'" class="block text-xs text-slate-400 font-medium mb-1">Quantity</label>
-                                        <input :id="'build-'+index+'-quantity'" type="number" min="1" x-model.number="build.quantity" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-sky-500">
-                                    </div>
-                                    <label class="flex items-center justify-between p-3 rounded-lg bg-slate-950 border border-slate-800 cursor-pointer hover:border-sky-500 transition">
-                                        <div class="flex flex-col">
-                                            <span class="font-medium text-slate-200">Nation Port</span>
-                                            <span class="text-xs text-slate-400">20% discount on materials</span>
-                                        </div>
-                                        <input type="checkbox" x-model="build.inPort" class="w-5 h-5 text-sky-500 bg-slate-800 border-slate-700 rounded focus:ring-sky-500 focus:ring-2">
-                                    </label>
-                                </div>
-                                <template x-if="selectedShip(build.shipKey)">
-                                    <div class="rounded-lg border border-slate-800 bg-slate-950/70 p-3 text-sm text-slate-400">
-                                        <div class="flex items-center justify-between gap-3">
-                                            <div>
-                                                <p class="font-semibold text-slate-200" x-text="selectedShip(build.shipKey).name"></p>
-                                                <p class="text-xs text-slate-500" x-text="selectedShip(build.shipKey).tier"></p>
-                                            </div>
-                                            <span class="text-xs text-sky-400" x-text="selectedShip(build.shipKey).level"></span>
-                                        </div>
-                                        <div class="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-                                            <div>Beams: <span class="text-slate-200" x-text="selectedShip(build.shipKey).resources.beam"></span></div>
-                                            <div>Bulkheads: <span class="text-slate-200" x-text="selectedShip(build.shipKey).resources.bulkhead"></span></div>
-                                            <div>Sailcloth: <span class="text-slate-200" x-text="selectedShip(build.shipKey).resources.canvas"></span></div>
-                                            <div>Plates: <span class="text-slate-200" x-text="selectedShip(build.shipKey).resources.plate"></span></div>
-                                        </div>
-                                    </div>
-                                </template>
-                            </div>
-                        </div>
-                    </template>
-                </div>
-            </section>
-
-            <!-- CURRENT INVENTORY -->
-            <section class="bg-slate-950 border border-slate-800 rounded-xl p-5 shadow-lg">
-                <h2 class="text-sm font-semibold text-emerald-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-                    <i data-lucide="package" class="w-4 h-4"></i> What You Already Have
-                </h2>
-                <div class="space-y-4">
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>
-                            <label for="inventory-beams" class="block text-xs text-slate-400 font-medium mb-1">Owned Beams</label>
-                            <input id="inventory-beams" type="number" x-model.number="mats.inventory.i_beam" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-emerald-400 focus:outline-none focus:border-emerald-500">
-                        </div>
-                        <div>
-                            <label for="inventory-bulkheads" class="block text-xs text-slate-400 font-medium mb-1">Owned Bulkheads</label>
-                            <input id="inventory-bulkheads" type="number" x-model.number="mats.inventory.i_bulkhead" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-emerald-400 focus:outline-none focus:border-emerald-500">
-                        </div>
+                <!-- Ship selector -->
+                <div>
+                  <label class="label">
+                    <span class="label-text">Ship</span>
+                  </label>
+                  <div v-if="selectedShip(build.shipKey)" class="flex items-center gap-3 mb-2 p-2 bg-base-300 rounded-box">
+                    <img :src="selectedShip(build.shipKey).image" alt="" class="w-10 h-10 object-contain rounded">
+                    <div class="flex-1">
+                      <div class="font-medium">{{ selectedShip(build.shipKey).name }}</div>
+                      <div class="text-xs opacity-60">{{ selectedShip(build.shipKey).tier }}</div>
                     </div>
-                    <div class="border-t border-slate-800/60 my-2"></div>
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>
-                            <label for="inventory-wood" class="block text-xs text-slate-400 font-medium mb-1">Owned Wood</label>
-                            <input id="inventory-wood" type="number" x-model.number="mats.inventory.i_wood" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-slate-300 focus:outline-none focus:border-emerald-500">
-                        </div>
-                        <div>
-                            <label for="inventory-iron" class="block text-xs text-slate-400 font-medium mb-1">Owned Iron</label>
-                            <input id="inventory-iron" type="number" x-model.number="mats.inventory.i_iron" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-slate-300 focus:outline-none focus:border-emerald-500">
-                        </div>
-                        <div>
-                            <label for="inventory-fabric" class="block text-xs text-slate-400 font-medium mb-1">Owned Fabric</label>
-                            <input id="inventory-fabric" type="number" x-model.number="mats.inventory.i_fabric" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-slate-300 focus:outline-none focus:border-emerald-500">
-                        </div>
-                        <div>
-                            <label for="inventory-resin" class="block text-xs text-slate-400 font-medium mb-1">Owned Resin</label>
-                            <input id="inventory-resin" type="number" x-model.number="mats.inventory.i_resin" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-slate-300 focus:outline-none focus:border-emerald-500">
-                        </div>
-                        <div>
-                            <label for="inventory-coal" class="block text-xs text-slate-400 font-medium mb-1">Owned Coal</label>
-                            <input id="inventory-coal" type="number" x-model.number="mats.inventory.i_coal" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-slate-300 focus:outline-none focus:border-emerald-500">
-                        </div>
-                        <div>
-                            <label for="inventory-canvas" class="block text-xs text-slate-400 font-medium mb-1">Owned Sailcloth</label>
-                            <input id="inventory-canvas" type="number" x-model.number="mats.inventory.i_canvas" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-slate-300 focus:outline-none focus:border-emerald-500">
-                        </div>
-                        <div>
-                            <label for="inventory-plate" class="block text-xs text-slate-400 font-medium mb-1">Owned Plates</label>
-                            <input id="inventory-plate" type="number" x-model.number="mats.inventory.i_plate" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-slate-300 focus:outline-none focus:border-emerald-500">
-                        </div>
-                    </div>
+                  </div>
+                  <select v-model="build.shipKey" class="select select-bordered w-full" :id="'build-'+index+'-ship'">
+                    <option value="" disabled>Select a ship</option>
+                    <option v-for="ship in shipCatalog" :value="ship.id">
+                      {{ ship.name }} — {{ ship.tier }}
+                    </option>
+                  </select>
                 </div>
-            </section>
+
+                <!-- Quantity + Port toggle -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="label">
+                      <span class="label-text">Quantity</span>
+                    </label>
+                    <input type="number" min="1" v-model.number="build.quantity" class="input input-bordered w-full" :id="'build-'+index+'-quantity'">
+                  </div>
+                  <label class="label cursor-pointer justify-between p-3 border border-base-300 rounded-box hover:border-primary transition">
+                    <div>
+                      <span class="label-text font-medium">Nation Port</span>
+                      <span class="label-text text-xs opacity-60 block">20% discount on materials</span>
+                    </div>
+                    <input type="checkbox" v-model="build.inPort" class="checkbox checkbox-primary">
+                  </label>
+                </div>
+
+                <!-- Ship resource details -->
+                <div v-if="selectedShip(build.shipKey)" class="bg-base-300 rounded-box p-3 text-sm">
+                  <div class="flex items-center justify-between gap-3">
+                    <div>
+                      <p class="font-semibold">{{ selectedShip(build.shipKey).name }}</p>
+                      <p class="text-xs opacity-60">{{ selectedShip(build.shipKey).tier }}</p>
+                    </div>
+                    <span class="badge badge-outline">{{ selectedShip(build.shipKey).level }}</span>
+                  </div>
+                  <div class="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                    <div v-for="f in formulas" :key="f.key">
+                      {{ f.name }}: <span class="font-semibold">{{ selectedShip(build.shipKey).resources[f.shipField] ?? 0 }}</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CURRENT INVENTORY -->
+      <section class="card bg-base-300 shadow-xl">
+        <div class="card-body">
+          <h2 class="card-title text-sm tracking-wider">
+            <i data-lucide="package" class="w-4 h-4 text-success"></i>
+            What You Already Have
+          </h2>
+
+          <div class="space-y-3">
+            <!-- Materials -->
+            <p class="text-xs font-semibold opacity-40 uppercase tracking-wider mt-2">Materials</p>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="label">
+                  <span class="label-text">Owned Beams</span>
+                </label>
+                <input type="number" v-model.number="mats.inventory.i_beam" class="input input-bordered w-full">
+              </div>
+              <div>
+                <label class="label">
+                  <span class="label-text">Owned Bulkheads</span>
+                </label>
+                <input type="number" v-model.number="mats.inventory.i_bulkhead" class="input input-bordered w-full">
+              </div>
+              <div>
+                <label class="label">
+                  <span class="label-text">Owned Sailcloth</span>
+                </label>
+                <input type="number" v-model.number="mats.inventory.i_canvas" class="input input-bordered w-full">
+              </div>
+              <div>
+                <label class="label">
+                  <span class="label-text">Owned Plates</span>
+                </label>
+                <input type="number" v-model.number="mats.inventory.i_plate" class="input input-bordered w-full">
+              </div>
+              <div>
+                <label class="label">
+                  <span class="label-text">Owned Bronze</span>
+                </label>
+                <input type="number" v-model.number="mats.inventory.i_bronze" class="input input-bordered w-full">
+              </div>
+            </div>
+
+            <div class="divider my-1"></div>
+
+            <!-- Resources -->
+            <p class="text-xs font-semibold opacity-40 uppercase tracking-wider">Resources</p>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="label">
+                  <span class="label-text">Owned Wood</span>
+                </label>
+                <input type="number" v-model.number="mats.inventory.i_wood" class="input input-bordered w-full">
+              </div>
+              <div>
+                <label class="label">
+                  <span class="label-text">Owned Iron</span>
+                </label>
+                <input type="number" v-model.number="mats.inventory.i_iron" class="input input-bordered w-full">
+              </div>
+              <div>
+                <label class="label">
+                  <span class="label-text">Owned Fabric</span>
+                </label>
+                <input type="number" v-model.number="mats.inventory.i_fabric" class="input input-bordered w-full">
+              </div>
+              <div>
+                <label class="label">
+                  <span class="label-text">Owned Resin</span>
+                </label>
+                <input type="number" v-model.number="mats.inventory.i_resin" class="input input-bordered w-full">
+              </div>
+              <div>
+                <label class="label">
+                  <span class="label-text">Owned Coal</span>
+                </label>
+                <input type="number" v-model.number="mats.inventory.i_coal" class="input input-bordered w-full">
+              </div>
+              <div>
+                <label class="label">
+                  <span class="label-text">Owned Copper</span>
+                </label>
+                <input type="number" v-model.number="mats.inventory.i_copper" class="input input-bordered w-full">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- SHOPPING LIST -->
+    <section class="card bg-base-300 shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title text-sm tracking-wider mb-2">
+          <i data-lucide="calculator" class="w-5 h-5 text-primary"></i>
+          Shopping List / Net Requirements
+        </h2>
+
+        <!-- Materials Needed -->
+        <p class="text-xs font-semibold opacity-40 uppercase tracking-wider mb-2">Materials Needed</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div v-for="matKey in materialOrder" :key="matKey" class="card bg-base-200">
+            <div class="card-body p-4">
+              <span class="text-xs opacity-60 font-semibold uppercase">{{ materialLabels[matKey] }}</span>
+              <span class="text-2xl font-black" :class="matColor(matKey)">{{ totals.materials[matKey] }}</span>
+            </div>
+          </div>
         </div>
 
-        <!-- RECALCULATED TOTALS (SHOPPING LIST) -->
-        <section class="bg-slate-950 border border-slate-800 rounded-xl p-6 shadow-lg">
-            <h2 class="text-base font-bold text-slate-200 uppercase tracking-wider mb-4 flex items-center gap-2">
-                <i data-lucide="calculator" class="w-5 h-5 text-sky-400"></i> Shopping List / Net Requirements
-            </h2>
+        <div class="divider my-3"></div>
 
-            <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 gap-4">
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <span class="text-xs text-slate-400 font-semibold uppercase">Wood Needed</span>
-                    <span x-text="totals().wood" class="text-2xl font-black text-amber-500 mt-2">0</span>
-                </div>
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <span class="text-xs text-slate-400 font-semibold uppercase">Iron Needed</span>
-                    <span x-text="totals().iron" class="text-2xl font-black text-slate-300 mt-2">0</span>
-                </div>
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <span class="text-xs text-slate-400 font-semibold uppercase">Fabric Needed</span>
-                    <span x-text="totals().fabric" class="text-2xl font-black text-teal-400 mt-2">0</span>
-                </div>
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <span class="text-xs text-slate-400 font-semibold uppercase">Resin Needed</span>
-                    <span x-text="totals().resin" class="text-2xl font-black text-purple-400 mt-2">0</span>
-                </div>
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <span class="text-xs text-slate-400 font-semibold uppercase">Coal Needed</span>
-                    <span x-text="totals().coal" class="text-2xl font-black text-stone-300 mt-2">0</span>
-                </div>
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <span class="text-xs text-slate-400 font-semibold uppercase">Sailcloth Needed</span>
-                    <span x-text="totals().sailcloth" class="text-2xl font-black text-cyan-400 mt-2">0</span>
-                </div>
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <span class="text-xs text-slate-400 font-semibold uppercase">Plates Needed</span>
-                    <span x-text="totals().plates" class="text-2xl font-black text-rose-400 mt-2">0</span>
-                </div>
+        <!-- Resources Needed -->
+        <p class="text-xs font-semibold opacity-40 uppercase tracking-wider mb-2">Resources Needed</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+          <div v-for="resKey in resourceOrder" :key="resKey" class="card bg-base-200">
+            <div class="card-body p-4">
+              <span class="text-xs opacity-60 font-semibold uppercase">{{ resourceLabels[resKey] }}</span>
+              <span class="text-2xl font-black" :class="resColor(resKey)">{{ totals.resources[resKey] }}</span>
             </div>
+          </div>
+        </div>
 
-            <div class="mt-6 p-4 bg-slate-900 rounded-xl border border-slate-800 text-sm text-slate-400 space-y-1">
-                <p>💡 Across <span class="text-slate-200 font-semibold" x-text="mats.builds.length"></span> build(s), <span class="text-slate-200 font-semibold" x-text="totals().beams"></span> beams and <span class="text-slate-200 font-semibold" x-text="totals().bulkheads"></span> bulkheads still need to be manufactured.</p>
-                <p>⚓ Sailcloth and plates consume additional raw materials during production, while beams and bulkheads drive the wood/iron/resin breakdown.</p>
-            </div>
-        </section>
-    </main>
+        <div class="alert mt-6">
+          <div>
+            <span>
+              💡 Across <strong>{{ mats.builds.length }}</strong> build(s),
+              you still need to manufacture
+              <strong>{{ totals.rawMaterials.beam || 0 }}</strong> beams,
+              <strong>{{ totals.rawMaterials.bulkhead || 0 }}</strong> bulkheads,
+              <strong>{{ totals.rawMaterials.sailcloth || 0 }}</strong> sailcloth,
+              <strong>{{ totals.rawMaterials.plate || 0 }}</strong> plates, and
+              <strong>{{ totals.rawMaterials.bronze || 0 }}</strong> bronze.
+            </span>
+            <span class="block text-xs opacity-60 mt-1">
+              ⚓ Sailcloth, plates, and bronze consume additional raw materials during production,
+              while beams and bulkheads drive the wood/iron/resin breakdown.
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <script>
-        function shipwrightApp() {
-            const defaultBuild = () => ({
-                id: Date.now() + Math.random(),
-                name: 'Build 1',
-                shipKey: '',
-                quantity: 1,
-                inPort: false
-            });
+  </main>
 
-            const defaultState = () => ({
-                islandDiscount: false,
-                inventory: {
-                    i_beam: 0,
-                    i_bulkhead: 0,
-                    i_wood: 0,
-                    i_iron: 0,
-                    i_fabric: 0,
-                    i_resin: 0,
-                    i_coal: 0,
-                    i_canvas: 0,
-                    i_plate: 0
-                },
-                builds: [defaultBuild()]
-            });
+  <!-- Settings Modal -->
+  <dialog id="settings-modal" class="modal">
+    <div class="modal-box">
+      <h3 class="text-lg font-bold">Player Skills</h3>
+      <div class="space-y-4 mt-4">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <p class="font-medium">Carpentry</p>
+            <p class="text-xs opacity-60">Beams &amp; Bulkheads 7% cheaper in ports</p>
+          </div>
+          <input type="checkbox" v-model="mats.settings.carpentry" class="toggle toggle-primary">
+        </div>
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <p class="font-medium">Blacksmithing</p>
+            <p class="text-xs opacity-60">Plates &amp; Bronze 10% cheaper in ports</p>
+          </div>
+          <input type="checkbox" v-model="mats.settings.blacksmithing" class="toggle toggle-primary">
+        </div>
+      </div>
+      <div class="modal-action">
+        <button @click="closeSettings()" class="btn">Close</button>
+      </div>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
 
-            const normalizeState = (raw) => {
-                if (!raw) {
-                    return defaultState();
-                }
+</div>
 
-                const saved = typeof raw === 'string' ? JSON.parse(raw) : raw;
-                const state = saved || {};
-
-                if (Array.isArray(state.builds) && state.builds.length) {
-                    return {
-                        islandDiscount: Boolean(state.islandDiscount),
-                        inventory: {
-                            i_beam: Number(state.inventory?.i_beam || state.i_beam || 0),
-                            i_bulkhead: Number(state.inventory?.i_bulkhead || state.i_bulkhead || 0),
-                            i_wood: Number(state.inventory?.i_wood || state.i_wood || 0),
-                            i_iron: Number(state.inventory?.i_iron || state.i_iron || 0),
-                            i_fabric: Number(state.inventory?.i_fabric || state.i_fabric || 0),
-                            i_resin: Number(state.inventory?.i_resin || state.i_resin || 0),
-                            i_coal: Number(state.inventory?.i_coal || state.i_coal || 0),
-                            i_canvas: Number(state.inventory?.i_canvas || state.i_canvas || 0),
-                            i_plate: Number(state.inventory?.i_plate || state.i_plate || 0)
-                        },
-                        builds: state.builds.map((build, index) => ({
-                            id: build.id || `${Date.now()}-${index}`,
-                            name: build.name || `Build ${index + 1}`,
-                            shipKey: build.shipKey || build.ship || '',
-                            quantity: Math.max(1, Number(build.quantity || 1)),
-                            inPort: Boolean(build.inPort || false)
-                        }))
-                    };
-                }
-
-                return {
-                    islandDiscount: Boolean(state.islandDiscount),
-                    inventory: {
-                        i_beam: Number(state.i_beam || 0),
-                        i_bulkhead: Number(state.i_bulkhead || 0),
-                        i_wood: Number(state.i_wood || 0),
-                        i_iron: Number(state.i_iron || 0),
-                        i_fabric: Number(state.i_fabric || 0),
-                        i_resin: Number(state.i_resin || 0),
-                        i_coal: Number(state.i_coal || 0),
-                        i_canvas: Number(state.i_canvas || 0),
-                        i_plate: Number(state.i_plate || 0)
-                    },
-                    builds: [defaultBuild()]
-                };
-            };
-
-            const flattenShips = (data) => Object.entries(data || {}).flatMap(([branchName, ships]) =>
-                (Array.isArray(ships) ? ships : []).map((ship, index) => ({
-                    id: `${branchName}:${ship.name}:${index}`,
-                    ...ship,
-                    branchName: branchName.replaceAll('_branch', '').replaceAll('_', ' ')
-                }))
-            );
-
-            const saved = localStorage.getItem('wosb_mats');
-
-            return {
-                mats: normalizeState(saved),
-                shipCatalog: [],
-                shipCatalogLoaded: false,
-
-                init() {
-                    this.loadShipCatalog();
-                    this.ensureSelectedShips();
-                },
-
-                loadShipCatalog() {
-                    fetch('./data/ships.json')
-                        .then((response) => response.json())
-                        .then((data) => {
-                            const catalog = flattenShips(data);
-
-                            this.shipCatalog = catalog;
-                            this.shipCatalogLoaded = true;
-                            this.ensureSelectedShips();
-                        })
-                        .catch((error) => {
-                            console.error('Unable to load ship data', error);
-                            this.shipCatalogLoaded = true;
-                        });
-                },
-
-                ensureSelectedShips() {
-                    if (!this.shipCatalog.length) {
-                        return;
-                    }
-
-                    this.mats.builds.forEach((build, index) => {
-                        if (!build.shipKey) {
-                            build.shipKey = this.shipCatalog[0].id;
-                        }
-
-                        if (!build.name) {
-                            build.name = `Build ${index + 1}`;
-                        }
-
-                        build.quantity = Math.max(1, Number(build.quantity || 1));
-                    });
-                },
-
-                selectedShip(shipKey) {
-                    return this.shipCatalog.find((ship) => ship.id === shipKey) || null;
-                },
-
-                addBuild() {
-                    this.mats.builds.push({
-                        id: Date.now() + Math.random(),
-                        name: `Build ${this.mats.builds.length + 1}`,
-                        shipKey: this.shipCatalog[0]?.id || '',
-                        quantity: 1,
-                        inPort: false
-                    });
-                },
-
-                removeBuild(index) {
-                    if (this.mats.builds.length > 1) {
-                        this.mats.builds.splice(index, 1);
-                    }
-                },
-
-                totals() {
-                    const inventory = this.mats.inventory || {};
-
-                    let totalWoodRequired = 0;
-                    let totalIronRequired = 0;
-                    let totalFabricRequired = 0;
-                    let totalResinRequired = 0;
-                    let totalCoalRequired = 0;
-                    let totalSailclothRequired = 0;
-                    let totalPlatesRequired = 0;
-                    let totalBeamsRequired = 0;
-                    let totalBulkheadsRequired = 0;
-
-                    this.mats.builds.forEach((build) => {
-                        const ship = this.selectedShip(build.shipKey);
-                        if (!ship) {
-                            return;
-                        }
-
-                        const quantity = Math.max(1, Number(build.quantity || 1));
-                        const mod = build.inPort ? 0.8 : 1;
-                        const beamCount = Number(ship.resources?.beam || 0) * quantity;
-                        const bulkheadCount = Number(ship.resources?.bulkhead || 0) * quantity;
-                        const canvasCount = Number(ship.resources?.canvas || 0) * quantity;
-                        const plateCount = Number(ship.resources?.plate || 0) * quantity;
-                        const rawWood = Number(ship.resources?.raw_wood || 0) * quantity;
-                        const rawTextile = Number(ship.resources?.raw_textile || 0) * quantity;
-                        const ironOre = Number(ship.resources?.iron_ore || 0) * quantity;
-
-                        const discounted = (value) => Math.max(0, Math.ceil(value * mod));
-
-                        totalBeamsRequired += discounted(beamCount);
-                        totalBulkheadsRequired += discounted(bulkheadCount);
-                        totalSailclothRequired += discounted(canvasCount);
-                        totalPlatesRequired += discounted(plateCount);
-
-                        totalWoodRequired += discounted(beamCount * 5) + discounted(rawWood);
-                        totalIronRequired += discounted(beamCount * 2) + discounted(bulkheadCount * 4) + discounted(ironOre);
-                        totalFabricRequired += discounted(canvasCount * 10) + discounted(rawTextile);
-                        totalResinRequired += discounted(bulkheadCount * 2) + discounted(canvasCount) + discounted(plateCount * 4);
-                        totalCoalRequired += discounted(plateCount * 15);
-                    });
-
-                    const woodShortfall = Math.max(0, totalWoodRequired - Number(inventory.i_wood || 0));
-                    const ironShortfall = Math.max(0, totalIronRequired - Number(inventory.i_iron || 0));
-                    const fabricShortfall = Math.max(0, totalFabricRequired - Number(inventory.i_fabric || 0));
-                    const resinShortfall = Math.max(0, totalResinRequired - Number(inventory.i_resin || 0));
-                    const coalShortfall = Math.max(0, totalCoalRequired - Number(inventory.i_coal || 0));
-                    const sailclothShortfall = Math.max(0, totalSailclothRequired - Number(inventory.i_canvas || 0));
-                    const platesShortfall = Math.max(0, totalPlatesRequired - Number(inventory.i_plate || 0));
-                    const beamShortfall = Math.max(0, totalBeamsRequired - Number(inventory.i_beam || 0));
-                    const bulkheadShortfall = Math.max(0, totalBulkheadsRequired - Number(inventory.i_bulkhead || 0));
-
-                    return {
-                        wood: woodShortfall.toLocaleString(),
-                        iron: ironShortfall.toLocaleString(),
-                        fabric: fabricShortfall.toLocaleString(),
-                        resin: resinShortfall.toLocaleString(),
-                        coal: coalShortfall.toLocaleString(),
-                        sailcloth: sailclothShortfall.toLocaleString(),
-                        plates: platesShortfall.toLocaleString(),
-                        beams: beamShortfall.toLocaleString(),
-                        bulkheads: bulkheadShortfall.toLocaleString()
-                    };
-                }
-            };
-        }
-    </script>
+<script src="app.js" type="module"></script>
+<script>navigator.serviceWorker?.register('/sw.js')</script>
 </body>
 </html>
