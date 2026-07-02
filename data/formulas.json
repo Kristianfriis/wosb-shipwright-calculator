@@ -1,0 +1,36 @@
+{
+  "materials": [
+    {
+      "key": "beam",
+      "name": "Beam",
+      "shipField": "beam",
+      "resources": { "wood": 100, "iron": 5 }
+    },
+    {
+      "key": "bulkhead",
+      "name": "Bulkhead",
+      "shipField": "bulkhead",
+      "resources": { "iron": 70, "resin": 1 }
+    },
+    {
+      "key": "sailcloth",
+      "name": "Sailcloth",
+      "shipField": "canvas",
+      "resources": { "fabric": 10, "resin": 1 }
+    },
+    {
+      "key": "plate",
+      "name": "Plate",
+      "shipField": "plate",
+      "resources": { "iron": 30, "coal": 15, "resin": 4 }
+    },
+    {
+      "key": "bronze",
+      "name": "Bronze",
+      "shipField": "bronze",
+      "resources": { "iron": 20, "copper": 10, "coal": 1 }
+    }
+  ],
+  "materialOrder": ["beam", "bulkhead", "sailcloth", "plate", "bronze"],
+  "resourceOrder": ["wood", "iron", "fabric", "resin", "coal", "copper"]
+}
